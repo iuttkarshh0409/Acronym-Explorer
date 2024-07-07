@@ -1,3 +1,4 @@
+/* General body styling */
 body {
     justify-content: center;
     display: block;
@@ -5,10 +6,14 @@ body {
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
-    background-repeat: initial;
+    background-repeat: no-repeat;
     background-color: black;
+    font-family: Arial, sans-serif;
+    margin: 0; /* Ensure no default body margin */
+    padding: 0; /* Ensure no default body padding */
 }
 
+/* Title styling */
 #title {
     border-radius: 10px;
     padding: 20px;
@@ -20,43 +25,56 @@ body {
     margin-top: 25px;
 }
 
+/* Subtitle styling */
 #subtitle {
     border-radius: 10px;
     padding: 20px;
     color: lightgreen;
     display: flex;
+    justify-content: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-top: 0%;
+    margin-top: 10px;
 }
 
+/* Input styling */
 #input {
     padding: 15px;
     font-size: 1em;
-    margin-top: 20px;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: 0; /* Ensure no default input margin */
+    box-sizing: border-box; /* Ensure padding and border are included in width */
 }
 
+/* Button styling */
 #button {
     padding: 10px 20px;
-    margin-left: 70px;
     background-color: lightgray;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-top: 15px;
 }
 
+/* Result div styling */
 #result {
     font-size: 1.5em;
     color: #fff;
     margin-top: 50px;
-    align-content: center;
-    display: flex;
-    margin-top: 120px;
-    margin-bottom: 20px;
-}
-#resetButton{
-padding: 10px;
-align-content: center;
-font-weight: bolder;
+    text-align: center;
 }
 
+/* Reset button styling */
+#resetButton {
+    padding: 10px;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* Navigation bar styling */
 nav {
     background-color: #333;
     color: #fff;
@@ -68,12 +86,12 @@ nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
-
+    margin: 0; /* Ensure no default ul margin */
+    padding: 0; /* Ensure no default ul padding */
 }
 
 nav ul li {
     margin: 0 15px;
-    justify-content: center;
 }
 
 nav ul li a {
@@ -86,12 +104,12 @@ nav ul li a {
 
 nav ul li a:hover {
     text-decoration: none;
-    justify-content: center;
 }
 
 /* Main content styles */
 main {
-    margin: 20px 0;
+    margin: 20px auto;
+    max-width: 800px;
 }
 
 /* Section styles */
@@ -99,22 +117,7 @@ section {
     margin-bottom: 20px;
 }
 
-/* Result and list styles */
-#result {
-    margin-top: 20px;
-    font-size: 1.2rem;
-    color: #333;
-}
-
-#acronym-list {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    
-}
-
+/* Acronym list container styling */
 #acronymListContainer {
     margin-bottom: 20px;
 }
@@ -122,51 +125,77 @@ section {
 #acronymListContainer ul {
     list-style: none;
     padding: 0;
+    margin: 0; /* Ensure no default ul margin */
 }
 
 #acronymListContainer li {
     padding: 10px;
     border-bottom: 1px solid #ccc;
     font-weight: bold;
-    font-style: oblique;
     background-color: antiquewhite;
-    display: block;
 }
 
+/* Pagination styling */
 #pagination {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
 }
 
 #pagination button {
     padding: 10px;
     margin: 0 10px;
+    cursor: pointer;
 }
 
 #pagination span {
     font-weight: bold;
 }
-#sortDescBtn{
-margin-left: 70px;
+
+/* Sort button styling */
+#sortDescBtn {
+    margin-left: 20px;
 }
-/* Add this CSS for dropdown animation and initial hidden state */
-/* Styles for recent searches dropdown */
+
+/* Recent searches dropdown styling */
 #recentSearchesLink {
     position: relative;
     display: inline-block;
-    margin-left: auto; /* Ensures it's at the rightmost corner */
-    justify-content: center;
-    max-width: 150px;
+    margin-left: auto;
 }
 
+#suggestionItem {
+    background-color: slateblue;
+    position: absolute;
+    border-radius: 0 0 5px 5px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    width: 300px;
+    left: 0;
+    margin: 0; /* Ensure no default div margin */
+    padding: 0; /* Ensure no default div padding */
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+    cursor: pointer;
+}
+
+/* Remove margin between input and suggestions */
+#input:focus + #suggestionItem {
+    margin-top: -1px;
+}
+
+/* Dropdown content styling */
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: black;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    cursor: none;
+    cursor: pointer;
+    width: 150px;
+    padding: 10px 0;
+    border-radius: 5px;
 }
 
 .dropdown-content.show {
@@ -176,21 +205,19 @@ margin-left: 70px;
 .dropdown-content li {
     padding: 10px;
     background-color: burlywood;
-    justify-content: left;
+    cursor: pointer;
 }
 
 .dropdown-content li:hover {
     background-color: darkslategrey;
-    cursor: auto;
 }
 
-
-/* Footer styles */
+/* Footer styling */
 footer {
     background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 0% 0;
+    padding: 10px 0;
     position: fixed;
     bottom: 0;
     width: 100%;

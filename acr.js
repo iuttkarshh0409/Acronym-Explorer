@@ -286,4 +286,52 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
-});
+      // Autocomplete functionality
+      const inputField = document.getElementById('input');
+      const suggestionsList = document.getElementById('autocomplete-list');
+  
+      inputField.addEventListener('input', async function() {
+          const query = inputField.value.trim();
+          if (query) {
+              const suggestions = await fetchAutocompleteSuggestions(query);
+              displaySuggestions(suggestions);
+          } else {
+              suggestionsList.style.display = 'none'; 
+              suggestionsList.innerHTML = '';
+          }
+      });
+  
+      async function fetchAutocompleteSuggestions(query) {
+          try {
+              const response = await fetch(`http://localhost:3000/api/autocomplete/${query}`);
+              if (response.ok) {
+                  const data = await response.json();
+                  return data.suggestions;
+              } else {
+                  console.error('Error fetching autocomplete suggestions:', response.statusText);
+                  return [];
+              }
+          } catch (error) {
+              console.error('Fetch error:', error);
+              return [];
+          }
+      }
+  
+      function displaySuggestions(suggestions) {
+          const suggestionsList = document.getElementById('suggestionItem'); // Corrected to match HTML id
+      
+          suggestionsList.innerHTML = ''; // Clear previous suggestions
+      
+          suggestions.forEach(suggestion => {
+              const suggestionItem = document.createElement('div');
+              suggestionItem.textContent = suggestion;
+              suggestionItem.addEventListener('click', () => {
+                  inputField.value = suggestion;
+                  suggestionsList.innerHTML = ''; // Clear suggestions after selecting
+              });
+              suggestionsList.appendChild(suggestionItem);
+          });
+          suggestionsList.style.display = 'block'; // Show autocomplete list
+      }
+  });  
+

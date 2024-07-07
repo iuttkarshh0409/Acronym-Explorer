@@ -96,6 +96,40 @@ app.post('/api/addAcronym', (req, res) => {
         });
 });
 
+// API Endpoint for Autocomplete Suggestions
+app.get('/api/autocomplete/:query', async (req, res) => {
+    const query = req.params.query.toUpperCase();
+    try {
+        const regex = new RegExp(`^${query}`);
+        const suggestions = await Acronym.find({ acronym: { $regex: regex } })
+            .limit(10) // Limit the number of suggestions
+            .select('acronym'); // Only fetch the acronym field
+
+        const suggestionList = suggestions.map(suggestion => suggestion.acronym);
+        res.status(200).json({ suggestions: suggestionList });
+    } catch (err) {
+        console.error('Error fetching autocomplete suggestions:', err);
+        res.status(500).json('Internal Server Error');
+    }
+});
+
+// API Endpoint to Fetch Autocomplete Suggestions
+app.get('/api/autocomplete/:query', async (req, res) => {
+    const query = req.params.query.toUpperCase();
+    try {
+        const suggestions = await Acronym.find({
+            acronym: { $regex: `^${query}` }
+        }).limit(5).select('acronym');
+
+        res.status(200).json({
+            suggestions: suggestions.map(s => s.acronym)
+        });
+    } catch (err) {
+        console.error('Error fetching suggestions:', err);
+        res.status(500).json('Internal Server Error');
+    }
+});
+
 // Start Server
 app.listen(port, () => {
     console.log(`Server started on http://localhost:${port}`);

@@ -6,34 +6,19 @@ const cors = require('cors');
 const app = express();
 const port = 3000;
 
-// MongoDB connection
+// MongoDB connection (local)
+const uri = "mongodb://localhost:27017/acronymsDB";
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://dubeutkarsh7:Raam%40108@acrdbcluster.rjfwo0s.mongodb.net/?appName=acrDBCluster";
-
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
+mongoose.connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 5000, // Adjust as needed
+    socketTimeoutMS: 45000 // Adjust as needed
+}).then(() => {
+    console.log('Connected to MongoDB');
+}).catch(err => {
+    console.error('Error connecting to MongoDB:', err);
 });
-
-async function run() {
-  try {
-    // Connect the client to the server	(optional starting in v4.7)
-    await client.connect();
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
-  }
-}
-run().catch(console.dir);
-
 
 // Enable CORS
 app.use(cors());
@@ -56,13 +41,57 @@ app.get('/api/acronym/:acronym', (req, res) => {
     Acronym.findOne({ acronym: inputAcronym })
         .then(result => {
             if (result) {
-                res.json(result.fullForm);
+                res.json({ fullForm: result.fullForm });
             } else {
                 res.status(404).json('Acronym not found');
             }
         })
         .catch(err => {
             console.error('Error fetching acronym:', err);
+            res.status(500).json('Internal Server Error');
+        });
+});
+
+// API Endpoint to Fetch Acronyms with Pagination
+app.get('/api/acronyms', async (req, res) => {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const skip = (page - 1) * limit;
+
+    try {
+        const count = await Acronym.countDocuments({});
+        const acronyms = await Acronym.find()
+            .skip(skip)
+            .limit(limit);
+
+        res.status(200).json({
+            acronyms,
+            totalPages: Math.ceil(count / limit),
+        });
+    } catch (err) {
+        console.error('Error fetching acronyms:', err);
+        res.status(500).json('Internal Server Error');
+    }
+});
+
+// API Endpoint to Add a New Acronym
+app.post('/api/addAcronym', (req, res) => {
+    const { acronym, fullForm } = req.body;
+    if (!acronym || !fullForm) {
+        return res.status(400).json({ error: 'Both acronym and fullForm are required.' });
+    }
+
+    const newAcronym = new Acronym({
+        acronym: acronym.toUpperCase(),
+        fullForm
+    });
+
+    newAcronym.save()
+        .then(() => {
+            res.status(201).json(newAcronym);
+        })
+        .catch(err => {
+            console.error('Error saving acronym:', err);
             res.status(500).json('Internal Server Error');
         });
 });

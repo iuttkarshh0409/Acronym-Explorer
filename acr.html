@@ -8,14 +8,50 @@
     <title>Acronym Explorer</title>
 </head>
 <body>
-    <h1 id="title">
-        
-    </h1>
-    <h2 id="subtitle">
-    
-    </h2>
-    <input id="input" type="text" placeholder="Enter the Keyword">
-    <button id="button" type="submit">Click to Proceed</button>
-    <div id="result"></div>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li style="cursor: pointer;" id="recentSearchesLink">
+                Recent Searches
+                <ul id="recentSearchesDropdown" class="dropdown-content">
+                    <!-- Recent searches will be dynamically added here -->
+                </ul>
+            </li>
+            <li><a href="#acronym-list">Acronym List</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <h1 id="title"></h1>
+        <h2 id="subtitle"></h2>
+        <input id="input" type="text" placeholder="Enter the Keyword">
+        <button id="button" type="submit">Click to Proceed</button>
+        <div id="result"></div>
+        <button id="resetButton" style="display:none;">Search for another Acronym</button>
+    </section>
+
+    <section id="about" style="display: none;">
+        <!-- About content -->
+        <p>About content goes here...</p>
+    </section>
+
+    <section id="acronym-list" style="display: none;">
+        <h2 style="font-weight: lighter;text-align: center;">Acronyms uploaded on the server:</h2>
+        <div id="sortBtns">
+            <button id="sortAscBtn">Sort A-Z</button>
+            <button id="sortDescBtn">Sort Z-A</button>
+        </div>
+        <div id="acronymListContainer"></div>
+        <div id="pagination">
+            <button id="prevPage" disabled>Previous</button>
+            <span id="currentPage">1</span>
+            <button id="nextPage">Next</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Acronym Explorer. All rights reserved.</p>
+    </footer>
 </body>
 </html>

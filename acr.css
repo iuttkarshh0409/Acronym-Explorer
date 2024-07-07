@@ -1,45 +1,197 @@
-body{
+body {
     justify-content: center;
     display: block;
-    background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) ,url(bg-img.jpg);
-    background-size:cover ;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(bg-img.jpg);
+    background-size: cover;
     background-attachment: fixed;
-    background-position:center;
+    background-position: center;
     background-repeat: initial;
     background-color: black;
 }
-#title{
+
+#title {
     border-radius: 10px;
     padding: 20px;
     color: #fff;
-    display:flex;
+    display: flex;
+    justify-content: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin-top: 25px;
 }
-#subtitle{
+
+#subtitle {
     border-radius: 10px;
     padding: 20px;
-    color:lightgreen;
-    display:flex;
+    color: lightgreen;
+    display: flex;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin-top: 0%;
-    margin-left: 60px;
 }
-#input{
+
+#input {
     padding: 15px;
     font-size: 1em;
     margin-top: 20px;
 }
-#button{
+
+#button {
     padding: 10px 20px;
     margin-left: 70px;
+    background-color: lightgray;
 }
-#result{
+
+#result {
     font-size: 1.5em;
     color: #fff;
     margin-top: 50px;
     align-content: center;
     display: flex;
+    margin-top: 120px;
+    margin-bottom: 20px;
+}
+#resetButton{
+padding: 10px;
+align-content: center;
+font-weight: bolder;
+}
+
+nav {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+
+}
+
+nav ul li {
+    margin: 0 15px;
+    justify-content: center;
+}
+
+nav ul li a {
+    color: cornsilk;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    text-decoration: none;
+    justify-content: center;
+}
+
+/* Main content styles */
+main {
+    margin: 20px 0;
+}
+
+/* Section styles */
+section {
+    margin-bottom: 20px;
+}
+
+/* Result and list styles */
+#result {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+#acronym-list {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    
+}
+
+#acronymListContainer {
+    margin-bottom: 20px;
+}
+
+#acronymListContainer ul {
+    list-style: none;
+    padding: 0;
+}
+
+#acronymListContainer li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+    font-style: oblique;
+    background-color: antiquewhite;
+    display: block;
+}
+
+#pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pagination button {
+    padding: 10px;
+    margin: 0 10px;
+}
+
+#pagination span {
+    font-weight: bold;
+}
+#sortDescBtn{
+margin-left: 70px;
+}
+/* Add this CSS for dropdown animation and initial hidden state */
+/* Styles for recent searches dropdown */
+#recentSearchesLink {
+    position: relative;
+    display: inline-block;
+    margin-left: auto; /* Ensures it's at the rightmost corner */
+    justify-content: center;
+    max-width: 150px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: black;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    cursor: none;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.dropdown-content li {
+    padding: 10px;
+    background-color: burlywood;
+    justify-content: left;
+}
+
+.dropdown-content li:hover {
+    background-color: darkslategrey;
+    cursor: auto;
+}
+
+
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 0% 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }

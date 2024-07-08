@@ -2,7 +2,7 @@
 body {
     justify-content: center;
     display: block;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(bg-img.jpg);
+    background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(bg-img.jpeg);
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -29,7 +29,7 @@ body {
 #subtitle {
     border-radius: 10px;
     padding: 20px;
-    color: lightgreen;
+    color: aqua;
     display: flex;
     justify-content: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -164,6 +164,7 @@ section {
     display: inline-block;
     margin-left: auto;
 }
+
 
 #suggestionItem {
     background-color: slateblue;

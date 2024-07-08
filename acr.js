@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Typing effect for the title
-    const title = "Welcome to Acronym Explorer! :)";
+    const title = "WELCOME TO THE ULTIMATE ACRONYM RESOURCE";
     const titleElement = document.getElementById('title');
     let index1 = 0;
 
@@ -8,14 +8,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (index1 < title.length) {
             titleElement.textContent += title.charAt(index1);
             index1++;
-            setTimeout(typeTitle, 120); // Adjust typing speed by changing the timeout value
+            setTimeout(typeTitle, 50); // Adjust typing speed by changing the timeout value
         }
     }
 
     typeTitle();
 
     // Typing effect for the subtitle
-    const subtitle = "Feel free to explore terminologies of your curriculum and don't hesitate to contribute to our database...";
+    const subtitle = "Uncover the secrets of acronyms and abbreviations and don't hesitate to contribute to our database...";
     const subtitleElement = document.getElementById('subtitle');
     let index2 = 0;
 

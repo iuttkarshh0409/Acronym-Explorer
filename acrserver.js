@@ -131,6 +131,6 @@ app.get('/api/autocomplete/:query', async (req, res) => {
 });
 
 // Start Server
-app.listen(port, () => {
-    console.log(`Server started on http://localhost:${port}`);
+app.listen(port, '0.0.0.0', () => {
+    console.log(`Server is running on http://0.0.0.0:${port}`);
 });

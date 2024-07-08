@@ -6,43 +6,142 @@
     <script src="acr.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acronym Explorer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        nav ul li {
+            flex: 1;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 14px 20px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+        }
+
+        nav ul li a:hover {
+            background-color: #575757;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        #home input[type="text"], 
+        #home button, 
+        #resetButton {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        #about, #acronym-list {
+            display: none;
+        }
+
+        #sortBtns {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        #sortBtns button {
+            flex: 1;
+            padding: 10px;
+            margin: 0 5px;
+            font-size: 16px;
+        }
+
+        #pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        #pagination button {
+            padding: 10px;
+            margin: 0 5px;
+            font-size: 16px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        @media (min-width: 600px) {
+            nav ul li a {
+                padding: 14px 30px;
+            }
+
+            #home input[type="text"], 
+            #home button, 
+            #resetButton {
+                width: auto;
+                max-width: 300px;
+            }
+        }
+    </style>
 </head>
 <body>
-      </script>
     <nav>
         <ul>
-            <li><a href="#home">HOME</a></li>
-            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
             <li style="cursor: pointer;" id="recentSearchesLink">
-                RECENT SEARCHES
-                <ul id="recentSearchesDropdown" class="dropdown-content"">
+                Recent Searches
+                <ul id="recentSearchesDropdown" class="dropdown-content">
                     <!-- Recent searches will be dynamically added here -->
                 </ul>
             </li>
-            <li><a href="#acronym-list">ACCESS DATABASE</a></li>
+            <li><a href="#acronym-list">Acronym List</a></li>
         </ul>
     </nav>
 
     <section id="home">
-        <h1 id="title"></h1>
-        <h2 id="subtitle"></h2>
+        <h1 id="title">Acronym Explorer</h1>
+        <h2 id="subtitle">Find the meaning of acronyms</h2>
         <div>
-        <input id="input" type="text" placeholder="Enter a Keyword">
-        <div id="suggestionItem" class="suggestionList"></div>
+            <input id="input" type="text" placeholder="Enter the Keyword">
+            <div id="suggestionItem" class="suggestionList"></div>
         </div>
-        <button id="button" type="submit">Search</button>
+        <button id="button" type="submit">Click to Proceed</button>
         <div id="result"></div>
         <button id="resetButton" style="display: none;">Search for another Acronym</button>
-     
-
     </section>
 
-    <section id="about" style="display: none;">
-        <!-- About content -->
+    <section id="about">
         <p>About content goes here...</p>
     </section>
 
-    <section id="acronym-list" style="display: none;">
+    <section id="acronym-list">
         <h2 style="font-weight: lighter;text-align: center;">Acronyms uploaded on the server:</h2>
         <div id="sortBtns">
             <button id="sortAscBtn">Sort A-Z</button>

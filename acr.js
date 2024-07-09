@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log('Input:', input); // Log the input
         if (input) {
             console.log('Fetching data for:', input); // Debug log
-            fetch(`http://169.254.84.159:3000/api/acronym/${input}`)
+            fetch(`http://localhost:3000/api/acronym/${input}`)
                 .then(response => {
                     console.log('Response status:', response.status); // Debug log
                     if (!response.ok) {
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 const fullForm = prompt('Enter the full form of the acronym:');
                                 if (fullForm) {
                                     // Send data to server for insertion
-                                    return fetch(`http://169.254.84.159:3000/api/addAcronym`, {
+                                    return fetch(`http://localhost:3000/api/addAcronym`, {
                                         method: 'POST',
                                         headers: {
                                             'Content-Type': 'application/json'
@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const itemsPerPage = 7;
 
     function fetchAcronyms(page) {
-        fetch(`http://169.254.84.159:3000/api/acronyms?page=${page}&limit=${itemsPerPage}`)
+        fetch(`http://localhost:3000/api/acronyms?page=${page}&limit=${itemsPerPage}`)
             .then(response => response.json())
             .then(data => {
                 displayAcronyms(data.acronyms);
@@ -286,52 +286,51 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
-
-    // Autocomplete functionality
-    const inputField = document.getElementById('input');
-    const suggestionsList = document.getElementById('autocomplete-list');
-
-    inputField.addEventListener('input', async function() {
-        const query = inputField.value.trim();
-        if (query) {
-            const suggestions = await fetchAutocompleteSuggestions(query);
-            displaySuggestions(suggestions);
-        } else {
-            suggestionsList.style.display = 'none'; 
-            suggestionsList.innerHTML = '';
-        }
-    });
-
-    async function fetchAutocompleteSuggestions(query) {
-        try {
-            const response = await fetch(`http://169.254.84.159:3000/api/autocomplete/${query}`);
-            if (response.ok) {
-                const data = await response.json();
-                return data.suggestions;
-            } else {
-                console.error('Error fetching autocomplete suggestions:', response.statusText);
-                return [];
-            }
-        } catch (error) {
-            console.error('Fetch error:', error);
-            return [];
-        }
-    }
-
-    function displaySuggestions(suggestions) {
-        const suggestionsList = document.getElementById('suggestionItem'); // Corrected to match HTML id
+      // Autocomplete functionality
+      const inputField = document.getElementById('input');
+      const suggestionsList = document.getElementById('autocomplete-list');
+  
+      inputField.addEventListener('input', async function() {
+          const query = inputField.value.trim();
+          if (query) {
+              const suggestions = await fetchAutocompleteSuggestions(query);
+              displaySuggestions(suggestions);
+          } else {
+              suggestionsList.style.display = 'none'; 
+              suggestionsList.innerHTML = '';
+          }
+      });
+  
+      async function fetchAutocompleteSuggestions(query) {
+          try {
+              const response = await fetch(`http://localhost:3000/api/autocomplete/${query}`);
+              if (response.ok) {
+                  const data = await response.json();
+                  return data.suggestions;
+              } else {
+                  console.error('Error fetching autocomplete suggestions:', response.statusText);
+                  return [];
+              }
+          } catch (error) {
+              console.error('Fetch error:', error);
+              return [];
+          }
+      }
+  
+      function displaySuggestions(suggestions) {
+          const suggestionsList = document.getElementById('suggestionItem'); // Corrected to match HTML id
       
-        suggestionsList.innerHTML = ''; // Clear previous suggestions
+          suggestionsList.innerHTML = ''; // Clear previous suggestions
       
-        suggestions.forEach(suggestion => {
-            const suggestionItem = document.createElement('div');
-            suggestionItem.textContent = suggestion;
-            suggestionItem.addEventListener('click', () => {
-                inputField.value = suggestion;
-                suggestionsList.innerHTML = ''; // Clear suggestions after selecting
-            });
-            suggestionsList.appendChild(suggestionItem);
-        });
-        suggestionsList.style.display = 'block'; // Show autocomplete list
-    }
-});
+          suggestions.forEach(suggestion => {
+              const suggestionItem = document.createElement('div');
+              suggestionItem.textContent = suggestion;
+              suggestionItem.addEventListener('click', () => {
+                  inputField.value = suggestion;
+                  suggestionsList.innerHTML = ''; // Clear suggestions after selecting
+              });
+              suggestionsList.appendChild(suggestionItem);
+          });
+          suggestionsList.style.display = 'block'; // Show autocomplete list
+      }
+  });  

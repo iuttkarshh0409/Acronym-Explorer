@@ -8,7 +8,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-color: black;
-    font-family: Arial, sans-serif;
+    font-family: Nunito;
     margin: 0; /* Ensure no default body margin */
     padding: 0; /* Ensure no default body padding */
 }
@@ -17,69 +17,100 @@ body {
 #title {
     border-radius: 10px;
     padding: 20px;
-    color: #fff;
+    color: white;
+    background-color: rgba(26, 29, 35, 0.8); /* Increased opacity to 80% */
     display: flex;
     justify-content: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-top: 25px;
+    margin-top: 0px;
 }
+
 
 /* Subtitle styling */
 #subtitle {
     border-radius: 10px;
     padding: 20px;
-    color: aqua;
+    color:gold;
     display: flex;
     justify-content: center;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin-top: 10px;
+    font-family: lato;
 }
 
 /* Input styling */
 #input {
     padding: 15px;
+    justify-content: center;
     font-size: 1em;
-    width: 300px;
-    border-radius: 5px;
+    width: 500px;
+    border-radius: 20px;
     border: 1px solid #ccc;
-    margin: 0; /* Ensure no default input margin */
+    margin-left:500px;
     box-sizing: border-box; /* Ensure padding and border are included in width */
+    margin-top: 1px;
+}
+
+
+#suggestionItem {
+    color: #007bff;
+    background-color: white;
+    position: absolute;
+    border-radius: 10px;
+    z-index: 1;
+    width: 500px;
+    left: 0;
+    margin-left: 500px; /* Ensure no default div margin */
+    padding: 0; /* Ensure no default div padding */
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+    cursor: pointer;
+    text-align: center; /* Corrected from text-align: 515px; to center */
 }
 
 /* Button styling */
 #button {
     padding: 10px 20px;
-    background-color: lightgray;
     border: none;
     cursor: pointer;
-    border-radius: 10px;
-    margin-top: 15px;
+    border-radius: 20px;
+    margin-left: 15px;
+    width: 80px;
 }
 
 /* Result div styling */
 #result {
     font-size: 1.5em;
     color: #fff;
-    margin-top: 50px;
-    text-align: center;
+    background-color: #808080;
+    margin-top: 130px;
+    justify-content: center;
+    max-width: 500px;
+    margin-left: 500px;
+     /* Border and Shadow */
+  border: 2px solid black; /* Adjust border color as desired */
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+
+  /* Optional: Text Shadow for a subtle 3D effect */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 /* Reset button styling */
 #resetButton {
     padding: 10px;
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 50px;
     cursor: pointer;
+    align-items: center;
+    margin-left: 630px;
 }
 
 /* Navigation bar styling */
 nav {
-    background-color: #333;
-    color: #fff;
+    background-color: rgba(46, 64, 83, 0.9); /* Increased opacity to 80% */
+    color: white;
     text-align: center;
     padding: 10px 0;
+    
 }
 
 nav ul {
@@ -116,23 +147,34 @@ main {
 section {
     margin-bottom: 20px;
 }
+#preSort{
+    font-weight: lighter;
+    text-align: center;
+     background-color:whitesmoke;
+     max-width: fit-content; 
+     margin-left: 610px;
+    
+
+}
 
 /* Acronym list container styling */
 #acronymListContainer {
     margin-bottom: 20px;
+    margin-left: 630px;
 }
 
 #acronymListContainer ul {
     list-style: none;
     padding: 0;
-    margin: 0; /* Ensure no default ul margin */
+    color: #007bff;
+    background-color: black;
+    max-width: fit-content;
 }
 
 #acronymListContainer li {
     padding: 10px;
     border-bottom: 1px solid #ccc;
     font-weight: bold;
-    background-color: antiquewhite;
 }
 
 /* Pagination styling */
@@ -154,8 +196,16 @@ section {
 }
 
 /* Sort button styling */
+#sortBtns{
+    height: fit-content;
+    font: caption;
+}
 #sortDescBtn {
-    margin-left: 20px;
+    margin-left: 160px;
+    font: optional;
+}
+#sortAscBtn{
+    margin-left: 630px;
 }
 
 /* Recent searches dropdown styling */
@@ -166,24 +216,10 @@ section {
 }
 
 
-#suggestionItem {
-    background-color: slateblue;
-    position: absolute;
-    border-radius: 0 0 5px 5px;
-    border: 1px solid #ccc;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    width: 300px;
-    left: 0;
-    margin: 0; /* Ensure no default div margin */
-    padding: 0; /* Ensure no default div padding */
-    box-sizing: border-box; /* Ensure padding and border are included in width */
-    cursor: pointer;
-}
 
 /* Remove margin between input and suggestions */
 #input:focus + #suggestionItem {
-    margin-top: -1px;
+    margin-top: 5px;
 }
 
 /* Dropdown content styling */
@@ -215,11 +251,11 @@ section {
 
 /* Footer styling */
 footer {
-    background-color: #333;
+    background-color: rgba(67, 74, 84, 0.4); /* Increased opacity to 80% */
     color: #fff;
     text-align: center;
     padding: 10px 0;
     position: fixed;
-    bottom: 0;
+    bottom: -15px;
     width: 100%;
 }

@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     typeTitle();
 
     // Typing effect for the subtitle
-    const subtitle = "Uncover the secrets of acronyms and abbreviations and don't hesitate to contribute to our database...";
+    const subtitle = "Uncover the secrets of Acronyms and Abbreviations & Feel free to contribute to our database...";
     const subtitleElement = document.getElementById('subtitle');
     let index2 = 0;
 
@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Acronym List Functionality
     let currentPage = 1;
-    const itemsPerPage = 7;
+    const itemsPerPage = 11;
 
     function fetchAcronyms(page) {
         fetch(`http://localhost:3000/api/acronyms?page=${page}&limit=${itemsPerPage}`)
@@ -245,7 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let searches = JSON.parse(localStorage.getItem('searches')) || [];
 
-        searches.slice(0, 7).forEach((search, index) => { // Display only last 7 searches
+        searches.slice(0, 4).forEach((search, index) => { // Display only last 7 searches
             const listItem = document.createElement('li');
             listItem.textContent = `${index + 1}. ${search}`;
             dropdown.appendChild(listItem);
@@ -296,7 +296,7 @@ document.addEventListener("DOMContentLoaded", () => {
               const suggestions = await fetchAutocompleteSuggestions(query);
               displaySuggestions(suggestions);
           } else {
-              suggestionsList.style.display = 'none'; 
+              suggestionsList.style.display="none"; 
               suggestionsList.innerHTML = '';
           }
       });

@@ -8,7 +8,6 @@
     <title>Acronym Explorer</title>
 </head>
 <body>
-      </script>
     <nav>
         <ul>
             <li><a href="#home">HOME</a></li>
@@ -26,11 +25,11 @@
     <section id="home">
         <h1 id="title"></h1>
         <h2 id="subtitle"></h2>
-        <div>
-        <input id="input" type="text" placeholder="Enter the Keyword">
+        <div id="iss">
+        <input id="input" type="text" placeholder="Enter a Keyword">
         <div id="suggestionItem" class="suggestionList"></div>
-        </div>
-        <button id="button" type="submit">Click to Proceed</button>
+        <button id="button" type="submit" style="font-weight: bolder;">Search</button>
+        </div>       
         <div id="result"></div>
         <button id="resetButton" style="display: none;">Search for another Acronym</button>
      
@@ -43,7 +42,7 @@
     </section>
 
     <section id="acronym-list" style="display: none;">
-        <h2 style="font-weight: lighter;text-align: center;">Acronyms uploaded on the server:</h2>
+        <h2 id="preSort">Acronyms uploaded on the server:</h2>
         <div id="sortBtns">
             <button id="sortAscBtn">Sort A-Z</button>
             <button id="sortDescBtn">Sort Z-A</button>

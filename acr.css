@@ -78,22 +78,23 @@ body {
 }
 
 /* Result div styling */
+
 #result {
+    /* Existing styles... */
     font-size: 1.5em;
-    color: #fff;
-    background-color: #808080;
+    color: #fff; /* Text color remains white */
+    background-color: rgba(128, 128, 128, 0.7); /* Adjust opacity value (0 to 1) */
+    border-radius: 50px;
     margin-top: 130px;
-    justify-content: center;
+    justify-content: center; /* Not applicable for divs */
     max-width: 500px;
     margin-left: 500px;
-     /* Border and Shadow */
-  border: 2px solid black; /* Adjust border color as desired */
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-
-  /* Optional: Text Shadow for a subtle 3D effect */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-}
-
+    text-align: center;
+    border: 2px solid black;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  
 /* Reset button styling */
 #resetButton {
     padding: 10px;

@@ -84,9 +84,8 @@ body {
     font-size: 1.5em;
     color: #fff; /* Text color remains white */
     background-color: rgba(128, 128, 128, 0.7); /* Adjust opacity value (0 to 1) */
-    border-radius: 50px;
+    border-radius: 30px;
     margin-top: 130px;
-    justify-content: center; /* Not applicable for divs */
     max-width: 500px;
     margin-left: 500px;
     text-align: center;
